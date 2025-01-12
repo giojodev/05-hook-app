@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import { Message } from "./Message";
 
 export const SimpleForm = () => {
 
@@ -17,16 +18,27 @@ export const SimpleForm = () => {
     }
     //Se ejecutara 1 vez el useEffect al montar el componente
     useEffect(() => {
-        console.log('Hey');
+        // console.log('Hey');
     }, []);
     //Se ejecutar cada vez que el formsState cambie
     useEffect(() => {
-        console.log('formState');
+        // console.log('formState');
     }, [formState]);
     //Se ejecutara cada vez que el email cambie
     useEffect(() => {
-        console.log('email');
+        // console.log('email');
     }, [email]);
+    
+    // useEffect(() => {
+    //   first
+    
+    //   return () => {
+    //     second
+    //   }
+    // }, [third])
+    
+
+
     return (
         <>
             <h1>useEffect</h1>
@@ -47,6 +59,11 @@ export const SimpleForm = () => {
                 value={email}
                 onChange={onInputChange}
             />
+
+            {
+                (username === 'strider2') && <Message />
+            }
+            
         </>
     )
 }
