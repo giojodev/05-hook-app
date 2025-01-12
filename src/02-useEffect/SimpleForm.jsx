@@ -15,11 +15,18 @@ export const SimpleForm = () => {
             [name]: value
         });
     }
-
+    //Se ejecutara 1 vez el useEffect al montar el componente
     useEffect(() => {
         console.log('Hey');
     }, []);
-
+    //Se ejecutar cada vez que el formsState cambie
+    useEffect(() => {
+        console.log('formState');
+    }, [formState]);
+    //Se ejecutara cada vez que el email cambie
+    useEffect(() => {
+        console.log('email');
+    }, [email]);
     return (
         <>
             <h1>useEffect</h1>
