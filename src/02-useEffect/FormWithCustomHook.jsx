@@ -1,47 +1,20 @@
 import { useEffect,useState } from "react";
-import { Message } from "./Message";
+import { useForm } from "../hooks/useForm";
 
-export const SimpleForm = () => {
 
-    const [formState, setFormState] = useState({
-        username:'strider',
-        email:'whoisyio@gmail.com'
+export const FormWithCustomHook = () => {
+
+    const {formState,onInputChange,username, email, password,resetInputs} = useForm({
+        username:'',
+        email:'',
+        password:''
     });
-    const {username, email} = formState;
 
-    const onInputChange = ({target}) => {
-        const {name, value} = target;
-        setFormState({
-            ...formState,
-            [name]: value
-        });
-    }
-    //Se ejecutara 1 vez el useEffect al montar el componente
-    useEffect(() => {
-        // console.log('Hey');
-    }, []);
-    //Se ejecutar cada vez que el formsState cambie
-    useEffect(() => {
-        // console.log('formState');
-    }, [formState]);
-    //Se ejecutara cada vez que el email cambie
-    useEffect(() => {
-        // console.log('email');
-    }, [email]);
     
-    // useEffect(() => {
-    //   first
-    
-    //   return () => {
-    //     second
-    //   }
-    // }, [third])
-    
-
-
+  
     return (
         <>
-            <h1>useEffect</h1>
+            <h1>Formulario con CustomHook</h1>
             <hr></hr>
             <input
                 type="text"
@@ -59,10 +32,17 @@ export const SimpleForm = () => {
                 value={email}
                 onChange={onInputChange}
             />
-
-            {
-                (username === 'strider2') && <Message />
-            }
+            <input
+                type="password"
+                className="form-control mt-2"
+                placeholder="Contrasena"
+                name="password"
+                value={password}
+                onChange={onInputChange}
+            />
+            <button
+                className="btn btn-primary mt-2"
+                onClick={resetInputs} >Reset</button>
             
         </>
     )
