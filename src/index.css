@@ -4,3 +4,7 @@ bodya{
 button{
     margin-right: 10px;
 }
+imgPokemon {
+    width: 10rem !important;
+    height: 10rem;
+}
