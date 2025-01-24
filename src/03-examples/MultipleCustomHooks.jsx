@@ -1,21 +1,44 @@
 import React from 'react'
-import { useFetch } from '../hooks/useFetch'
+import { useFetch,useCounter } from '../hooks'
+import { LoadingMessage } from './LoadingMessage';
+import {PokemonCard} from './PokemonCard'
+// import '../../src/index.css'
 
 const MultipleCustomHooks = () => {
-const {data,hasError,isLoading} = useFetch("https://pokeapi.co/api/v2/pokemon/418");
-let url=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${data?.id}.gif`;
+
+  const{counter,decrement,increment} = useCounter(1);
+
+const {data,hasError,isLoading} = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}`);
 
   return (
     <>
     
-        <h1>PokeInfo</h1>
-        <hr />
-        {isLoading && <p>Cargando...</p>}
-        <img src={url} alt={data?.name} className='imgPokemon'/>
-        <pre>
+      <h1>PokeInfo</h1>
+      <hr />
+      {isLoading
+        ? <LoadingMessage />
+        : <PokemonCard
+          id={counter} 
+          name={data.name}
+          sprites={[
+            data.sprites.front_default,
+            data.sprites.back_default,
+            data.sprites.front_shiny,
+            data.sprites.back_shiny
+          ]}
+        />
+      }
+        
+        
 
-            { data?.name}
-            </pre>
+            <button
+            className='btn btn-primary'
+            onClick={()=> counter > 1 ? decrement() : null}
+            >Anterior</button>
+            <button
+            onClick={()=>increment()}
+            className='btn btn-primary'
+            >Siguient</button>
     </>
   )
 }

@@ -46,7 +46,7 @@ export const useFetch = (url) => {
             hasError:false,
             error:null
         });
-        // console.log(data);
+        //  console.log(data);
     }
   
     return {

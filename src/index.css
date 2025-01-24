@@ -1,10 +1,15 @@
-bodya{
+body{
     padding: 20px;
 }
 button{
     margin-right: 10px;
 }
-imgPokemon {
-    width: 10rem !important;
+.imgPokemon {
+    width: 5rem !important;
+    height: 5rem;
+    margin-left: 5rem;
+}
+.imgPokemon2{
+    width: 10rem;
     height: 10rem;
 }
