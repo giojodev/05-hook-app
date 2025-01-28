@@ -1,6 +1,12 @@
 
 import {useEffect, useState} from 'react'
 
+
+const localCache= {
+
+}
+
+
 export const useFetch = (url) => {
   
     const [state, setState] = useState({
@@ -25,8 +31,21 @@ export const useFetch = (url) => {
     }
 
     const getFechedData = async () => {
+        if(localCache[url]){
+            setState({
+                data:localCache[url],
+                isLoading:false,
+                hasError:false,
+                error:null
+            });
+            return;
+        }
+       
         setLoadingState();
+
         const response = await fetch(url);
+
+        await new Promise(resolve=>setTimeout(resolve,1500));
         if(!response.ok){
             setState({
                 data:null,
@@ -46,6 +65,7 @@ export const useFetch = (url) => {
             hasError:false,
             error:null
         });
+        localCache[url] = data;
         //  console.log(data);
     }
   
