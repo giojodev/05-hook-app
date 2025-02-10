@@ -7,9 +7,16 @@ button{
 .imgPokemon {
     width: 10rem !important;
     height: 10rem;
-    margin-left: 5rem;
+    
 }
 .imgPokemon2{
     width: 10rem;
     height: 10rem;
+    margin-left: 7rem !important;
+    margin-top: 2rem;
+}
+.MainCardP{
+    height: 10rem !important;
+    width: 10rem;
+    margin-left: 30rem !important;
 }

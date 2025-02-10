@@ -1,10 +1,9 @@
-import React from 'react'
+import { PokemonMainCard } from "./PokemonMainCard"
 
 export const PokemonCard = ({id,name,sprites =[]}) => {
   return (
     <section>
-      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`} alt={name} className='imgPokemon'/> 
-      <h2 className="text-capitalize">#{id} - {name}</h2>
+      ,<PokemonMainCard id={id} name={name} />
       <br />
           <div>
 
