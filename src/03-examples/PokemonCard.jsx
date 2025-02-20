@@ -1,8 +1,17 @@
+import  { useLayoutEffect, useRef } from 'react'
 import { PokemonMainCard } from "./PokemonMainCard"
 
 export const PokemonCard = ({id,name,sprites =[]}) => {
+      const hwRef = useRef();
+      
+      useLayoutEffect(() => {
+        const {height,width} =  hwRef.current.getBoundingClientRect();
+        console.log({height,width})
+      
+        
+      }, [name])
   return (
-    <section>
+    <section style={{height:200,display:'flex',flexDirection:'row'}}>
       ,<PokemonMainCard id={id} name={name} />
       <br />
           <div>
